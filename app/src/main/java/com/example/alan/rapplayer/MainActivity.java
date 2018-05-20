@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_main);
 
-        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        audioManager = (AudioManager) getSystemService (Context.AUDIO_SERVICE);
 
         final ArrayList<Song> songs = new ArrayList<>();
         songs.add (new Song ("Ice Ice Baby", "Vanilla Ice", R.raw.iceicebaby));
