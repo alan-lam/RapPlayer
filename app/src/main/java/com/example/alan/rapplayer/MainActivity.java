@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
                 int result = audioManager.requestAudioFocus (onAudioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-                    mediaPlayer = MediaPlayer.create(MainActivity.this, song.getSongResourceId());
+                    mediaPlayer = MediaPlayer.create (MainActivity.this, song.getSongResourceId());
                     mediaPlayer.start();
-                    mediaPlayer.setOnCompletionListener(completionListener);
+                    mediaPlayer.setOnCompletionListener (completionListener);
                 }
             }
         });
