@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         songs.add (new Song ("Feels", "Calvin Harris ft. Pharrell Williams, Katy Perry, Big Sean", R.raw.feels));
         songs.add (new Song ("Clique", "Kanye West ft. JAY-Z, Big Sean", R.raw.clique));
         songs.add (new Song ("The Motto", "Drake ft. Lil Wayne, Tyga", R.raw.themotto));
+        songs.add (new Song ("You Already Know", "Fergie ft. Nicki Minaj", R.raw.youalreadyknow));
 
         SongAdapter adapter = new SongAdapter (this, songs);
         ListView listView = findViewById (R.id.list);
