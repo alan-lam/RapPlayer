@@ -17,14 +17,14 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private MediaPlayer.OnCompletionListener completionListener = new MediaPlayer.OnCompletionListener() {
         @Override
-        public void onCompletion (MediaPlayer mp) {
+        public void onCompletion(MediaPlayer mp) {
             releaseMediaPlayer();
         }
     };
     private AudioManager audioManager;
     AudioManager.OnAudioFocusChangeListener onAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
         @Override
-        public void onAudioFocusChange (int focusChange) {
+        public void onAudioFocusChange(int focusChange) {
             if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT || focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
                 mediaPlayer.pause();
             }
@@ -38,35 +38,36 @@ public class MainActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate (Bundle savedInstanceState) {
-        super.onCreate (savedInstanceState);
-        setContentView (R.layout.activity_main);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        audioManager = (AudioManager) getSystemService (Context.AUDIO_SERVICE);
+        audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<Song> songs = new ArrayList<>();
-        songs.add (new Song ("Ice Ice Baby", "Vanilla Ice", R.raw.iceicebaby));
-        songs.add (new Song ("Gold Digger", "Kanye West ft. Jamie Foxx", R.raw.golddigger));
-        songs.add (new Song ("Feels", "Calvin Harris ft. Pharrell Williams, Katy Perry, Big Sean", R.raw.feels));
-        songs.add (new Song ("Clique", "Kanye West ft. JAY-Z, Big Sean", R.raw.clique));
-        songs.add (new Song ("The Motto", "Drake ft. Lil Wayne, Tyga", R.raw.themotto));
-        songs.add (new Song ("You Already Know", "Fergie ft. Nicki Minaj", R.raw.youalreadyknow));
+        songs.add(new Song("Ice Ice Baby", "Vanilla Ice", R.raw.iceicebaby));
+        songs.add(new Song("Gold Digger", "Kanye West ft. Jamie Foxx", R.raw.golddigger));
+        songs.add(new Song("Feels", "Calvin Harris ft. Pharrell Williams, Katy Perry, Big Sean", R.raw.feels));
+        songs.add(new Song("Clique", "Kanye West ft. JAY-Z, Big Sean", R.raw.clique));
+        songs.add(new Song("The Motto", "Drake ft. Lil Wayne, Tyga", R.raw.themotto));
+        songs.add(new Song("You Already Know", "Fergie ft. Nicki Minaj", R.raw.youalreadyknow));
+        songs.add(new Song("Mo Bounce", "Iggy Azalea", R.raw.mobounce));
 
-        SongAdapter adapter = new SongAdapter (this, songs);
-        ListView listView = findViewById (R.id.list);
-        listView.setAdapter (adapter);
+        SongAdapter adapter = new SongAdapter(this, songs);
+        ListView listView = findViewById(R.id.list);
+        listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener (new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick (AdapterView<?> parent, View view, int position, long id) {
-                Song song = songs.get (position);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Song song = songs.get(position);
                 releaseMediaPlayer();
 
-                int result = audioManager.requestAudioFocus (onAudioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+                int result = audioManager.requestAudioFocus(onAudioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-                    mediaPlayer = MediaPlayer.create (MainActivity.this, song.getSongResourceId());
+                    mediaPlayer = MediaPlayer.create(MainActivity.this, song.getSongResourceId());
                     mediaPlayer.start();
-                    mediaPlayer.setOnCompletionListener (completionListener);
+                    mediaPlayer.setOnCompletionListener(completionListener);
                 }
             }
         });
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         if (mediaPlayer != null) {
             mediaPlayer.release();
             mediaPlayer = null;
-            audioManager.abandonAudioFocus (onAudioFocusChangeListener);
+            audioManager.abandonAudioFocus(onAudioFocusChangeListener);
         }
     }
 }

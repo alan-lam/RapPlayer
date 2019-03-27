@@ -6,7 +6,7 @@ public class Song {
     private String mArtist;
     private int mSongResourceId;
 
-    public Song (String songName, String artist, int songResourceId) {
+    public Song(String songName, String artist, int songResourceId) {
         mSongName = songName;
         mArtist = artist;
         mSongResourceId = songResourceId;
