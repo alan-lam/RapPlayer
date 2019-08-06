@@ -52,6 +52,17 @@ public class MainActivity extends AppCompatActivity {
         songs.add(new Song("The Motto", "Drake ft. Lil Wayne, Tyga", R.raw.themotto));
         songs.add(new Song("You Already Know", "Fergie ft. Nicki Minaj", R.raw.youalreadyknow));
         songs.add(new Song("Mo Bounce", "Iggy Azalea", R.raw.mobounce));
+        songs.add(new Song("Logic", "Wu Tang Forever", R.raw.logic));
+        songs.add(new Song("Ghostface Killah", "Wu Tang Forever", R.raw.ghostfacekillah));
+        songs.add(new Song("Raekwon", "Wu Tang Forever", R.raw.raekwon));
+        songs.add(new Song("RZA", "Wu Tang Forever", R.raw.rza));
+        songs.add(new Song("Method Man", "Wu Tang Forever", R.raw.methodman));
+        songs.add(new Song("Inspectah Deck", "Wu Tang Forever", R.raw.inspectahdeck));
+        songs.add(new Song("Cappadonna", "Wu Tang Forever", R.raw.cappadonna));
+        songs.add(new Song("Jackpot Scotty Wotty", "Wu Tang Forever", R.raw.jackpotscottywotty));
+        songs.add(new Song("U-God", "Wu Tang Forever", R.raw.ugod));
+        songs.add(new Song("Masta Killa", "Wu Tang Forever", R.raw.mastakilla));
+        songs.add(new Song("GZA", "Wu Tang Forever", R.raw.gza));
 
         SongAdapter adapter = new SongAdapter(this, songs);
         ListView listView = findViewById(R.id.list);
